@@ -1,0 +1,117 @@
+:root {
+    --card-front-color: #2d2d2d;
+    --card-back-color: #444;
+    --card-title-color: gold;
+    --text-color: white;
+    --footer-color: black;
+}
+
+body {
+    background-image: url('imagem2.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal dos cartões */
+#container {
+    display: flex;
+    perspective: 1000px;
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Cada cartão individual */
+.cartao {
+    background-color: transparent;
+    width: 300px;
+    height: 320px;
+    position: relative;
+}
+
+/* Título fixo (tema do cartão) */
+.cartao__tema {
+    background-color: var(--card-title-color);
+    color: black;
+    text-align: left;
+    padding: 8px;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    margin: 0;
+    z-index: 2;
+    width: calc(100% - 1.2rem);
+    box-sizing: border-box;
+}
+
+/* Parte que gira */
+.cartao__conteudo {
+    background-color: var(--card-front-color);
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* Aplica a rotação ao passar o mouse */
+.cartao:hover .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+/* Faces frontal e traseira */
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+/* Frente */
+.cartao__conteudo__pergunta {
+    background-color: var(--card-front-color);
+    color: var(--text-color);
+}
+
+/* Verso */
+.cartao__conteudo__resposta {
+    background-color: var(--card-back-color);
+    color: var(--text-color);
+    transform: rotateY(180deg);
+}
+
+/* Texto das perguntas/respostas */
+.cartao__conteudo p {
+    margin-top: 4rem;
+    padding: 1rem;
+}
+
+/* Rodapé fixo */
+footer {
+    background-color: var(--footer-color);
+    color: var(--text-color);
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 2rem;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
